@@ -1,0 +1,26 @@
+.standings-container {
+    width: 95%;
+    margin: 15px auto;
+    margin-top: 40px;
+    padding: 15px 20px; /* Adjusted padding for better mobile view */
+    background-color: #1a1a1a; /* Dark background for a sleek look */
+    border-radius: 12px;
+    box-shadow: 0px 2px 80px rgba(0, 0, 0, 0.9); /* Deep shadow for a spooky feel */
+    border: 2px solid #f1c40f; /* Golden yellow for a bold contrast */
+    font-family: 'Bebas Neue', cursive; /* Modern, sleek font */
+    font-size: 1.2rem;
+    overflow-x: auto; /* Allow horizontal scrolling for the table */
+  }
+
+  .standings-container h2 {
+    text-align: center;
+    padding: 20px 0;
+    color: #f1c40f;
+    font-size: 3em;
+    font-family: "Anton SC", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-shadow: 4px 4px 10px #000000; /* Shadow effect for spooky depth */
+    border-bottom: 3px solid #f1c40f;
+    margin-bottom: 20px;
+  }

@@ -1,0 +1,70 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Fira Sans", sans-serif;
+  background-color: #373636;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+  padding-top: 25px;
+  max-width: 3000px;      /* Set a maximum width for larger screens */
+  width: 100%;              /* Use a percentage for flexible width */
+  margin: 0 auto;
+}
+
+h2 {
+  padding-top: 0.2em;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  font-family: "Anton SC", sans-serif;
+  word-spacing: 0.1em;
+  text-shadow: 5px 4px 10px rgba(0, 0, 0, 0.7);
+  font-weight: 300; 
+  font-size: 2.2em;
+}
+
+.carouselimg {
+  display: block;              
+  margin: 0 auto;             /* Centers the image horizontally */
+  width:98%;               
+  height: auto;              /* Set a fixed height for all images */
+  object-fit: contain;          /* Ensures the image covers the entire area without distortion */
+  border-radius: 8px;
+}
+
+
+.team {
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #000;
+}
+
+footer p {
+  color: #ffcc00;
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: 15px 10px;   /* Smaller padding on mobile */
+    max-width: 100%;      /* Remove the max-width restriction for small screens */
+    width: 100vw;         /* Set width to full viewport width */
+  }
+}

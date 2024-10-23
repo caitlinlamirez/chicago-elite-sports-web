@@ -1,0 +1,29 @@
+header {
+    display: flex;
+    flex-direction: column; /* Aligns nav under header content */
+    align-items: center; /* Centers header content */
+    background-color: #000000;
+    width: 100%; 
+    }
+  
+  
+  .header-content {
+    display: flex; /* Use flexbox to align logo and text */
+    align-items: center; /* Center align items vertically */
+  }
+
+
+  .banner-image { /* Maintain aspect ratio */
+    width: 100%;
+    height: auto;
+  }
+  
+  @media (max-width: 768px) {
+    .banner-image {
+      width: 100%;
+      height: 150px;
+      object-fit: cover; /* Crop the image to fit the container */
+      object-position: center center; /* Adjust which part of the image is shown */
+   
+    }
+  }
