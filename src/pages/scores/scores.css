@@ -5,7 +5,7 @@
   width: 95%;
   margin: 15px auto;
   margin-top: 40px;
-  padding: 15px 20px; /* Adjusted padding for better mobile view */
+  padding: 15px 10px; /* Adjusted padding for better mobile view */
   background-color: #1a1a1a; /* Dark background for a sleek look */
   border-radius: 12px;
   box-shadow: 0px 2px 80px rgba(0, 0, 0, 0.9); /* Deep shadow for a spooky feel */
@@ -73,11 +73,10 @@
 
 .scores-container th, 
 .scores-container td {
-  padding: 15px;
   text-align: center;
   border: 1px solid #3d3d3d; /* Subtle border for structure */
-  font-size: 1.1em;
-  font-weight: 600; /* Slightly bolder for emphasis */
+  font-size: 1.0em;
+  font-weight: 200;
 }
 
 /* Table header */
@@ -85,12 +84,8 @@
   background-color: #ae2e2e; /* Dark red for header */
   color: #f1c40f; /* Bright yellow text for spooky contrast */
   font-family: 'Bebas Neue', cursive; /* Bold, modern font for headers */
-  font-size: 1.5em;
+  font-size: 1.3em;
   letter-spacing: 0.08em;
-}
-
-.scores-container tbody {
-  background-color: #ffffff; /* Slightly lighter row for contrast */
 }
 
 .scores-container p {
@@ -103,14 +98,14 @@
 .scores-container .game-score {
   display: inline-block;
   width: 60px; /* Set a fixed width */
-  height: 50px; /* Corrected to 50px */
+  height: 40px; /* Corrected to 50px */
   background-color: #aa1d1d; /* Red background for scores */
   color: #ffffff; /* White text for contrast */
   border-radius: 5px; /* Slight rounding of corners */
   text-align: center; /* Center the text */
   font-weight: bold; /* Make it bold */
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5); 
-  padding: 7px;
+  padding: 2px;
   margin: 0 auto; /* Center the box */
 }
 
@@ -149,4 +144,17 @@
 /* Alternating row colors */
 .scores-container tr:nth-child(even) td {
   background-color: #e2e1e1;
+}
+
+.team-container {
+  display: flex;
+  align-items: center; /* Aligns items vertically centered */
+}
+
+.team-logo {
+  width: 2em; /* Adjust width as needed */
+  height: 2em; /* Adjust height to match width for a perfect circle */
+  border-radius: 50%; /* Makes the image circular */
+  object-fit: cover; /* Ensures the image covers the entire area */
+  margin-right: 0.5em; /* Space between the logo and the team name */
 }

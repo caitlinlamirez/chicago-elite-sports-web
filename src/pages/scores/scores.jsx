@@ -10,13 +10,33 @@ export const Scores = () => {
 
   // Sample game data
   const games = [
-    { year: '2024', tournament: 'Halloween Bash', time: '10:00 AM', home: 'Wicked Wizards', score: '5 - 3', away: 'Spooky Spirits', division: 'A' },
-    { year: '2024', tournament: 'Spooky Cup', time: '12:30 PM', home: 'Ghostly Ghouls', score: '2 - 4', away: 'Vampire Vipers', division: 'B' },
-    { year: '2023', tournament: 'Spooky Cup', time: '3:00 PM', home: 'Vampire Vipers', score: '3 - 5', away: 'Wicked Wizards', division: 'A' },
-    { year: '2023', tournament: 'Halloween Bash', time: '5:30 PM', home: 'Spooky Spirits', score: '1 - 3', away: 'Ghostly Ghouls', division: 'B' },
-    { year: '2024', tournament: 'Halloween Bash', time: '7:00 PM', home: 'Wicked Wizards', score: '4 - 2', away: 'Ghostly Ghouls', division: 'A' },
-    { year: '2024', tournament: 'Spooky Cup', time: '9:30 PM', home: 'Spooky Spirits', score: '2 - 2', away: 'Vampire Vipers', division: 'B' }
+    // Saturday, 11/2/2024
+    { date: '2024-11-02', tournament: 'Halloween Classic 2024', time: '10:00 AM', home: 'Chicago Snipers', score: '0 - 0', away: 'Chicago Stingrays', division: 'B' },
+    { date: '2024-11-02', tournament: 'Halloween Classic 2024', time: '11:00 AM', home: 'Dynamos', score: '0 - 0', away: 'HDH', division: 'B' },
+    { date: '2024-11-02', tournament: 'Halloween Classic 2024', time: '12:00 PM', home: 'Rays', score: '0 - 0', away: 'Kings', division: 'B' },
+    { date: '2024-11-02', tournament: 'Halloween Classic 2024', time: '1:00 PM', home: 'Indiana', score: '0 - 0', away: 'Rays B', division: 'B' },
+    { date: '2024-11-02', tournament: 'Halloween Classic 2024', time: '2:00 PM', home: '', score: 'N/A', away: '', division: '' }, // Special event, no teams
+    { date: '2024-11-02', tournament: 'Halloween Classic 2024', time: '3:00 PM', home: 'Toros', score: '0 - 0', away: 'Indiana', division: 'B' },
+    { date: '2024-11-02', tournament: 'Halloween Classic 2024', time: '4:00 PM', home: 'HDH', score: '0 - 0', away: 'Rays B', division: 'B' },
+    { date: '2024-11-02', tournament: 'Halloween Classic 2024', time: '5:00 PM', home: 'Snipers', score: '0 - 0', away: 'Kings', division: 'B' },
+    { date: '2024-11-02', tournament: 'Halloween Classic 2024', time: '6:00 PM', home: 'Toros', score: '0 - 0', away: 'Dynamos', division: 'B' },
+  
+    // Sunday, 11/3/2024
+    { date: '2024-11-03', tournament: 'Halloween Classic 2024', time: '9:00 AM', home: 'Seed 5 (B)', score: '0 - 0', away: 'Seed 4 (B)', division: 'B' },
+    { date: '2024-11-03', tournament: 'Halloween Classic 2024', time: '10:00 AM', home: 'Seed 2 (B)', score: '0 - 0', away: 'Seed 3 (B)', division: 'B' },
+    { date: '2024-11-03', tournament: 'Halloween Classic 2024', time: '11:00 AM', home: 'Seed 1 (B)', score: '0 - 0', away: 'Winner 4/5', division: 'B' },
+    { date: '2024-11-03', tournament: 'Halloween Classic 2024', time: '12:00 PM', home: 'Seed 2 (A)', score: '0 - 0', away: 'Seed 3 (A)', division: 'A' },
+    { date: '2024-11-03', tournament: 'Halloween Classic 2024', time: '1:00 PM', home: 'Winner 1', score: '0 - 0', away: 'Winner 2', division: 'A' },
+    { date: '2024-11-03', tournament: 'Halloween Classic 2024', time: '2:00 PM', home: 'Winner 2/3', score: '0 - 0', away: 'Seed 1 (A)', division: 'A' },
   ];
+  
+  
+
+  // Helper function to format date
+  const formatDate = (dateString) => {
+    const [year, month, day] = dateString.split('-');
+    return `${month}/${day}/${year}`; // Returns MM/DD/YYYY
+  };
 
   // Filtered games based on selected filters
   const filteredGames = games.filter(game => {
@@ -75,32 +95,41 @@ export const Scores = () => {
             <table summary="This table shows the results for different games" className="table table-bordered dt-responsive">
               <thead>
                 <tr>
+                  <th>Date</th>
                   <th>Time</th>
                   <th>Home</th>
                   <th>Score</th>
                   <th>Away</th>
-                  <th>Rec Division</th>
+                  <th>Rec Div</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredGames.length > 0 ? (
                   filteredGames.map((game, index) => (
                     <tr key={index}>
+                      <td>{formatDate(game.date)}</td> {/* Format the date here */}
                       <td>{game.time}</td>
-                      <td>{game.home}</td>
                       <td>
-                        <p className='game-score'>
-                         {game.score} 
-                        </p>
-                        
+                        <div className='team-container'>
+                          <img className='team-logo' src='https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg'></img>
+                        {game.home}
+                        </div>
                       </td>
-                      <td>{game.away}</td>
+                      <td>
+                        <p className='game-score'>{game.score}</p>
+                      </td>
+                      <td>
+                        <div className='team-container'>
+                          <img className='team-logo' src='https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg'></img>
+                        {game.away}
+                        </div>
+                      </td>
                       <td>{game.division}</td>
                     </tr>
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="5">No games found</td>
+                    <td colSpan="6">No games found</td>
                   </tr>
                 )}
               </tbody>

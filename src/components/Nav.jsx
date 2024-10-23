@@ -31,7 +31,6 @@ function Nav() {
 
             <ul>
                 <li><Link to="/about">About</Link></li>
-                <li><a href="#schedule">Schedule</a></li>
                 <li><Link to="/results">Results</Link></li>
                 <li><Link to="/standings">Standings</Link></li>
                 <li><a href="#contact">Contact</a></li>

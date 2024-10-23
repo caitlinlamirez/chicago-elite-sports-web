@@ -1,26 +1,151 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&display=swap');
+
 .standings-container {
-    width: 95%;
-    margin: 15px auto;
-    margin-top: 40px;
-    padding: 15px 20px; /* Adjusted padding for better mobile view */
-    background-color: #1a1a1a; /* Dark background for a sleek look */
-    border-radius: 12px;
-    box-shadow: 0px 2px 80px rgba(0, 0, 0, 0.9); /* Deep shadow for a spooky feel */
-    border: 2px solid #f1c40f; /* Golden yellow for a bold contrast */
-    font-family: 'Bebas Neue', cursive; /* Modern, sleek font */
-    font-size: 1.2rem;
-    overflow-x: auto; /* Allow horizontal scrolling for the table */
+  width: 95%;
+  margin: 15px auto;
+  margin-top: 40px;
+  padding: 15px 20px; /* Adjusted padding for better mobile view */
+  background-color: #1a1a1a; /* Dark background for a sleek look */
+  border-radius: 12px;
+  box-shadow: 0px 2px 80px rgba(0, 0, 0, 0.9); /* Deep shadow for a spooky feel */
+  border: 2px solid #f1c40f; /* Golden yellow for a bold contrast */
+  font-family: 'Bebas Neue', cursive; /* Modern, sleek font */
+  font-size: 1.2rem;
+  overflow-x: auto; /* Allow horizontal scrolling for the table */
+}
+
+.standings-container h2 {
+  text-align: center;
+  padding: 20px 0;
+  color: #f1c40f;
+  font-size: 3em;
+  font-family: "Anton SC", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 4px 4px 10px #000000; /* Shadow effect for spooky depth */
+  border-bottom: 3px solid #f1c40f;
+  margin-bottom: 20px;
+}
+
+/* Filter Bar */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping for mobile */
+  justify-content: space-between; /* Adjusted for spacing */
+  background-color: #1f1f1f;
+  padding: 15px;
+  padding-inline: 10px; /* Adjusted for better mobile view */
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.7);
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  color: #f1c40f; /* Golden yellow for text */
+  flex: 1; /* Allow filters to grow equally */
+  min-width: 150px; /* Ensure minimum width for usability */
+  margin: 5px; /* Margin for spacing */
+}
+
+.filter label {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}
+
+.filter select {
+  padding: 8px 10px;
+  border-radius: 4px;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  font-size: 1em;
+  font-family: "Sintony", sans-serif;
+
+}
+
+.filter select:focus {
+  outline: none;
+  border: 2px solid #f1c40f; /* Golden yellow on focus */
+}
+
+.standings-container th, 
+.standings-container td {
+  padding: 15px;
+  text-align: center;
+  border: 1px solid #3d3d3d; /* Subtle border for structure */
+  font-size: 1.1em;
+  font-weight: 600; /* Slightly bolder for emphasis */
+}
+
+/* Table header */
+.standings-container th {
+  background-color: #ae2e2e; /* Dark red for header */
+  color: #f1c40f; /* Bright yellow text for spooky contrast */
+  font-family: 'Bebas Neue', cursive; /* Bold, modern font for headers */
+  font-size: 1.5em;
+  letter-spacing: 0.08em;
+}
+
+.standings-container tbody {
+  background-color: #ffffff; /* Slightly lighter row for contrast */
+}
+
+.standings-container p {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 1.2em;
+  color: #888888; /* Light gray for secondary text */
+}
+
+.standings-container .game-score {
+  display: inline-block;
+  width: 60px; /* Set a fixed width */
+  height: 50px; /* Corrected to 50px */
+  background-color: #aa1d1d; /* Red background for standings */
+  color: #ffffff; /* White text for contrast */
+  border-radius: 5px; /* Slight rounding of corners */
+  text-align: center; /* Center the text */
+  font-weight: bold; /* Make it bold */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5); 
+  padding: 7px;
+  margin: 0 auto; /* Center the box */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .standings-container {
+    padding: 10px; /* Reduced padding for mobile */
   }
 
   .standings-container h2 {
-    text-align: center;
-    padding: 20px 0;
-    color: #f1c40f;
-    font-size: 3em;
-    font-family: "Anton SC", sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    text-shadow: 4px 4px 10px #000000; /* Shadow effect for spooky depth */
-    border-bottom: 3px solid #f1c40f;
-    margin-bottom: 20px;
+    font-size: 2.5rem; /* Slightly smaller on mobile */
   }
+
+  .standings-container th, 
+  .standings-container td {
+    font-size: 1.2rem; /* Smaller font size for better fit */
+    padding: 10px; /* Adjusted padding */
+  }
+
+  .filter-bar {
+    flex-direction: column; /* Stack filter items vertically */
+    align-items: center; /* Center align for mobile */
+  }
+
+  .filter {
+    min-width: 100%; /* Full width on mobile */
+    margin: 10px 0; /* Space between filters */
+  }
+
+  .standings-container th {
+    font-size: 1.2em; /* Smaller font for table headers */
+  }
+}
+
+/* Alternating row colors */
+.standings-container tr:nth-child(even) td {
+  background-color: #e2e1e1;
+}
