@@ -9,7 +9,7 @@ export const Home = () => {
   useEffect(() => {
     const fetchTeams = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:5001/getTeams');
+        const response = await fetch('https://ces-server.onrender.com/getTeams');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

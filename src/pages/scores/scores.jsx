@@ -10,12 +10,12 @@ export const Scores = () => {
   const [games, setGames] = useState([]);
   const [uniqueTeams, setUniqueTeams] = useState([]);
   const [isFilterVisible, setIsFilterVisible] = useState(true);
-  
+
 
   useEffect(() => {
     const fetchGames = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:5001/getGames'); // Replace with your API endpoint
+        const response = await fetch('https://ces-server.onrender.com/getGames'); // Replace with your API endpoint
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

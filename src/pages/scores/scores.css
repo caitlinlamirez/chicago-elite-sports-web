@@ -207,7 +207,7 @@ td {
   .filter-bar {
     flex-direction: column; /* Stack filter items vertically */
     align-items: center; /* Center align for mobile */
-    width: 45vh;
+    width: 100vw;
   }
 
   .filter {
