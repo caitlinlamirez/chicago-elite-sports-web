@@ -84,9 +84,8 @@ export const Standings = () => {
           {sortedTeams.map((team, index) => (
             <tr key={team._id}>
               <td>{index + 1}</td>
-              <td>
-              <img
-                  className='team-logo'
+              <td className='team-row'>
+              <img className='team-logo'
                   src={team.teamName.logo || 'https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg'}
                   alt="Team Logo"/>
                 {team.teamName.teamName}</td>

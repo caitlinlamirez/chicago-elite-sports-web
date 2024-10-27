@@ -35,7 +35,7 @@
   align-items: center;
   justify-content: center;
   background-color: rgba(28, 28, 28, 0.8);
-  border: 2px solid #ffd700;
+
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   padding: 20px;
@@ -49,12 +49,11 @@
 }
 
 .team img {
-  width: 4em;
-  height: 4em;
+  width: 85px;
+  height: auto;
   margin-bottom: 10px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #ffd700;
 }
 
 #knapper-logo {
@@ -111,8 +110,8 @@
   }
 
   .team img {
-    width: 60px; /* Adjust image size for mobile */
-    height: 60px; /* Consistent height */
+    width: 90px; /* Adjust image size for mobile */
+    height: 90px; /* Consistent height */
   }
 
   .team h3 {

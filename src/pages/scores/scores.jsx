@@ -77,7 +77,7 @@ export const Scores = () => {
         <div className="filter-bar">
           <div className="filter">
             <label>Year:</label>
-            <select value={selectedYear} onChange={(e) => setSelectedYear(e.target.value)}>
+            <select className = 'select-dropdown' value={selectedYear} onChange={(e) => setSelectedYear(e.target.value)}>
               <option value="">All Years</option>
               <option value="2024">2024</option>
             </select>

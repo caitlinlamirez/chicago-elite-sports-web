@@ -1,57 +1,26 @@
-  .scores-container {
+.scores-container {
   width: 95%;
   margin: 15px auto;
   margin-top: 40px;
-  padding: 15px 10px; /* Adjusted padding for better mobile view */
-  background-color: #1a1a1a; /* Dark background for a sleek look */
+  padding: 15px 10px;
+  background-color: #1a1a1a;
   border-radius: 12px;
-  box-shadow: 0px 2px 80px rgba(0, 0, 0, 0.9); /* Deep shadow for a spooky feel */
-  border: 2px solid #f1c40f; /* Golden yellow for a bold contrast */
-  font-family: 'Bebas Neue', cursive; /* Modern, sleek font */
-  font-size: 1.2rem;
+  box-shadow: 0px 2px 80px rgba(0, 0, 0, 0.9);
+  border: 2px solid #f1c40f;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1rem;
 }
 
-.show-filters-btn {
-  color: #fff; /* Text color */
-  font-size: 1rem; /* Font size */
-  padding: 10px 15px; /* Padding for better touch area */
-  border: none; /* Remove default border */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Transition effects */
-  display: flex; /* Align items horizontally */
-  align-items: center; /* Center the icon and text vertically */
+.table-container td {
+  font-family: "Roboto Condensed", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
-.show-filters-btn:active {
-  transform: scale(0.95); /* Shrink the button on click */
+.filter select {
+  font-family: "Roboto Condensed", sans-serif !important;
+  font-size: 0.8em;
 }
-
-.show-filters-btn i {
-  margin-right: 8px; /* Space between icon and text */
-}
-
-
-.table-container {
-  width: 100%;
-  margin: 15px auto;
-  padding: 2px 10px; /* Adjusted padding for better mobile view */
-  font-family: 'Bebas Neue', cursive; /* Modern, sleek font */
-  font-size: 1.2rem;
-  overflow:scroll;
-}
-
-.table {
-  width: 100%; /* Ensures the table takes the full width of its parent */
-  overflow-x: auto; /* Allows horizontal scrolling if the table is too wide */
-}
-
-@media (max-width: 768px) {
-  .table {
-    font-size: 1.2rem; /* Adjust font size for smaller screens */
-  }
-}
-
 
 .scores-container h2 {
   text-align: center;
@@ -61,28 +30,67 @@
   font-family: "Anton SC", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  text-shadow: 4px 4px 10px #000000; /* Shadow effect for spooky depth */
+  text-shadow: 4px 4px 10px #000000;
   margin-bottom: 20px;
 }
 
+.show-filters-btn {
+  color: #fff;
+  font-size: 1rem;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: -1em;
+}
+
+.show-filters-btn:active {
+  transform: scale(0.95);
+}
+
+.show-filters-btn i {
+  margin-right: 8px;
+}
+
+.table-container {
+  width: 100%;
+  margin: 15px auto;
+  padding: 2px 10px;
+  overflow: scroll;
+}
+
+.table th,
+.table td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table {
+  width: 100%;
+  table-layout: auto;
+}
+
 .heading-line {
-  width: 100%; /* Full width of the container */
-  height: 3px; /* Thickness of the line */
-  background-color: #f1c40f; /* Line color */
-  margin: 10px 0; /* Space above and below the line */
+  width: 100%;
+  height: 3px;
+  background-color: #f1c40f;
+  margin: 10px 0;
   margin-top: -20px;
 }
 
-
-/* Filter Bar */
 .filter-bar {
   margin: 1rem;
   display: flex;
-  flex-wrap: wrap; /* Allow wrapping for mobile */
-  justify-content: space-between; /* Adjusted for spacing */
+  flex-wrap: wrap;
+  justify-content: space-between;
   background-color: #1f1f1f;
   padding: 15px;
-  padding-inline: 10px; /* Adjusted for better mobile view */
+  padding-inline: 10px;
   border-radius: 8px;
   margin-bottom: 20px;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.7);
@@ -91,15 +99,10 @@
 .filter {
   display: flex;
   flex-direction: column;
-  color: #f1c40f; /* Golden yellow for text */
-  flex: 1; /* Allow filters to grow equally */
-  min-width: 150px; /* Ensure minimum width for usability */
-  margin: 5px; /* Margin for spacing */
-}
-
-.filter label {
-  font-size: 1.2em;
-  margin-bottom: 5px;
+  color: #f1c40f;
+  flex: 1;
+  min-width: 150px;
+  margin: 5px;
 }
 
 .filter select {
@@ -108,33 +111,20 @@
   border: none;
   background-color: #333;
   color: #fff;
-  font-size: 1em;
-  font-family: "Sintony", sans-serif;
-
+  font-size: 0.6em;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 .filter select:focus {
   outline: none;
-  border: 2px solid #f1c40f; /* Golden yellow on focus */
+  border: 2px solid #f1c40f;
 }
 
-
-
-.scores-container th, 
-.scores-container td {
-  text-align: center;
-  border: 1px solid #3d3d3d; /* Subtle border for structure */
-  font-size: 1em;
-  font-weight: 200;
-  vertical-align: middle;
-}
-
-/* Table header */
 .scores-container th {
-  background-color: #6a0909; /* Dark red for header */
-  color: #ffffff; /* Bright yellow text for spooky contrast */
-  font-family: 'Bebas Neue', cursive; /* Bold, modern font for headers */
-  font-size: 1.3em;
+  background-color: #6a0909;
+  color: #ffffff;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1em;
   letter-spacing: 0.08em;
 }
 
@@ -142,93 +132,89 @@
   margin-top: 20px;
   text-align: center;
   font-size: 1.2em;
-  color: #888888; /* Light gray for secondary text */
+  vertical-align: middle;
 }
 
 .scores-container .game-score {
-  display: inline-block;
-  width: 2.9rem; /* Set a fixed width */
-  height: 2.4rem; /* Corrected to 50px */
-  background-color: #aa1d1d; /* Red background for scores */
-  color: #ffffff; /* White text for contrast */
-  border-radius: 5px; /* Slight rounding of corners */
-  text-align: center; /* Center the text */
-  font-weight: bold; /* Make it bold */
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5); 
-  padding: 2px;
-  margin: 0 auto; /* Center the box */
+  display: flex; /* Change to flexbox */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  width: 2.9rem;
+  height: 2.4rem;
+  background-color: #aa1d1d;
+  color: #ffffff;
+  border-radius: 5px;
+  font-weight: bold;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+  margin: 0 auto;
+  padding: 0; /* Remove padding */
 }
 
 
-
-/* Alternating row colors */
 .scores-container tr:nth-child(even) td {
   background-color: #e2e1e1;
 }
 
-td {
-  vertical-align: middle; /* Vertically align all cell content to the middle */
-  height: 10px; /* Set a fixed height for all cells */
+.scores-container th,
+.scores-container td {
+  text-align: center;
+  border: 1px solid #3d3d3d;
+  font-size: 0.8em;
+  vertical-align: middle;
 }
 
 .team-container {
   display: flex;
-  align-items: center; /* Center items vertically */
-  justify-content: left; /* Center items horizontally */
+  align-items: center;
+  justify-content: left;
 }
-
-
 
 .team-logo {
-  width: 2em;                       /* Adjust width as needed */
-  height: 2em;                      /* Adjust height to match width for a perfect circle */
-  border-radius: 50%;               /* Makes the image circular */
-  object-fit: cover;                /* Ensures the image covers the entire area */
-  margin-right: 10px;               /* Space between the logo and the team name */
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
 }
 
-
-/* Responsive Adjustments */
 @media (max-width: 768px) {
+  .table {
+    font-size: 1.1rem;
+  }
   .scores-container {
-    padding: 2px; /* Reduced padding for mobile */
+    padding: 2px;
     font-size: 1rem;
   }
-
   .scores-container h2 {
-    font-size: 2.5rem; /* Slightly smaller on mobile */
+    font-size: 2.5rem;
   }
-
-  .scores-container th, 
+  .scores-container th,
   .scores-container td {
-    padding: 0.5em; /* Adjusted padding */
+    padding: 0.3em;
   }
-
   .filter-bar {
-    flex-direction: column; /* Stack filter items vertically */
-    align-items: center; /* Center align for mobile */
+    flex-direction: column;
+    align-items: center;
     width: 100vw;
   }
-
   .filter {
-    min-width: 100%; /* Full width on mobile */
-    margin: 10px 0; /* Space between filters */
+    width: 100%;
+    margin: 10px 0;
   }
-
   .scores-container th {
-    font-size: 1.2em; /* Smaller font for table headers */
+    font-size: 1em;
   }
   .scores-container .game-score {
-    display: inline-block;
-    width: 2.5rem; /* Set a fixed width */
-    height: 2rem; /* Corrected to 50px */
+    width: 2.5rem; /* Adjust width for mobile */
+    height: 2rem; /* Adjust height for mobile */
+    font-size: 0.9rem; /* Adjust font size for better readability */
+    padding: 0.2em; /* Optional: Add a little padding */
   }
-
   .team-logo {
-    width: 3em; /* Slightly larger for better visibility */
-    height: 3em; /* Maintain a circular shape */
-    border-radius: 50%; /* Makes the image circular */
-    object-fit: cover; /* Ensures the image covers the entire area */
-    margin-right: 0.5rem; /* Space between the logo and the team name */
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 0.5rem;
   }
 }
