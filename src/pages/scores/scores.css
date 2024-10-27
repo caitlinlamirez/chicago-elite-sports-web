@@ -19,7 +19,7 @@
 
 .filter select {
   font-family: "Roboto Condensed", sans-serif !important;
-  font-size: 0.8em;
+  font-size: 1.1rem !important;
 }
 
 .scores-container h2 {
