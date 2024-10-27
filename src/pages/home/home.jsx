@@ -37,7 +37,7 @@ export const Home = () => {
     <div className='home-container'>
       <Countdown />
       <section id="about">
-        <h2>Welcome to Chicago Elite Sports</h2>
+        <h2 id="headline">Welcome to Chicago Elite Sports</h2>
         <Carousel>
           <Carousel.Item>
             <img className="carousel-img" src="/carousel1.png" alt="Summer Cup" />
