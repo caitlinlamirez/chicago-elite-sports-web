@@ -6,7 +6,7 @@ export const Standings = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isFilterVisible, setIsFilterVisible] = useState(true);
-  const [selectedDivision, setSelectedDivision] = useState('B'); // Default to Division A
+  const [selectedDivision, setSelectedDivision] = useState('A'); // Default to Division A
 
   useEffect(() => {
     const fetchStandings = async () => {
