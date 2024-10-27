@@ -8,6 +8,7 @@ export const About = () => {
       
       <section>
         <h2>Welcome to the Halloween Classic 2024</h2>
+        <img src='./about.png'></img>
         <p>
           The Halloween Classic 2024 is an exhilarating hockey tournament dedicated to uniting our vibrant community and showcasing top-tier hockey talent from across the Midwest. Hosted by a passionate family with decades of love for the sport, this annual event promises a weekend of competition, camaraderie, and unforgettable experiences for players and fans alike.
         </p>

@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import './scores.css';
+
+const useQuery = () => {
+  return new URLSearchParams(useLocation().search);
+};
 
 export const Scores = () => {
   // State for filters
@@ -11,6 +16,8 @@ export const Scores = () => {
   const [uniqueTeams, setUniqueTeams] = useState([]);
   const [isFilterVisible, setIsFilterVisible] = useState(true);
 
+  const query = useQuery();
+  const teamFromQuery = query.get('team');
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -41,6 +48,9 @@ export const Scores = () => {
           ].filter(teamName => teamName); 
 
           setUniqueTeams(teams);
+          if (teamFromQuery) {
+            setSelectedTeam(decodeURIComponent(teamFromQuery));
+          }
           console.log(data.games); // Log the data received
         } else {
           console.error('Expected an array, but received:', data);
@@ -51,7 +61,7 @@ export const Scores = () => {
     };
 
     fetchGames(); // Call the fetch function
-  }, []);
+  }, [teamFromQuery]);
   
   // Filtered games based on selected filters
   const filteredGames = games.filter(game => {

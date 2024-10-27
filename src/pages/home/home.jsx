@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Countdown from './Countdown';
 import Carousel from 'react-bootstrap/Carousel';
 import './home.css';
+import { Link } from 'react-router-dom';
 
 export const Home = () => {
   const [teams, setTeams] = useState([]); // State to hold the teams data
@@ -52,14 +53,16 @@ export const Home = () => {
       <section id="teams">
         <h2>Participating Teams</h2>
         <div className="team-list">
-          {teams.map((team, index) => (
-            <div className="team" key={index}>
-              <img src={team.logo} alt={team.teamName} /> {/* Displaying logo */}
-              <h3>{team.teamName}</h3> {/* Displaying team name */}
-            </div>
-          ))}
+            {teams.map((team, index) => (
+                <div className="team" key={index}>
+                    <Link to={`/results?team=${encodeURIComponent(team.teamName)}`}>
+                        <img src={team.logo} alt={team.teamName} /> {/* Displaying logo */}
+                        <h3>{team.teamName}</h3> {/* Displaying team name */}
+                    </Link>
+                </div>
+            ))}
         </div>
-      </section>
+    </section>
       <section id="sponsors">
         <h2>Our Sponsors</h2>
         <img id="knapper-logo"src="./knapper.png"></img>

@@ -10,6 +10,14 @@
     border: 2px solid #f1c40f; /* Golden yellow for a bold contrast */
     font-size: 1.2rem;
 }
+.about-container img{
+    display: block;          /* Ensures the image behaves like a block element */
+    margin: 0 auto;         /* Centers the image horizontally */
+    width: 100%;            /* Makes the image responsive to the width of its container */
+    max-width: 600px;       /* Limits the maximum width (adjust as needed) */
+    height: auto;           /* Maintains the aspect ratio */
+    margin-bottom: 1.5em;
+}
 
 /* Main Title */
 .about-container h1 {
