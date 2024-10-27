@@ -45,6 +45,12 @@ export const Home = () => {
           <Carousel.Item>          
             <img className="carousel-img" src="/carousel2.png" alt="Summer Cup" />
           </Carousel.Item>
+          <Carousel.Item>          
+            <img className="carousel-img" src="/carousel3.png" alt="Summer Cup" />
+          </Carousel.Item>
+          <Carousel.Item>          
+            <img className="carousel-img" src="/carousel4.png" alt="Summer Cup" />
+          </Carousel.Item>
           
         </Carousel>
         <p className='event-paragraph'>Get ready for the Halloween Classic 2024! This exciting tournament brings together teams from all over the Midwest for a thrilling weekend of hockey. Watch as players showcase their skills in fast-paced matches, and cheer them on during special competitions like the Hardest Shot and Shootout challenges. 
