@@ -1,92 +1,111 @@
 #countdown {
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto; 
+}
+
+#countdown li {
+  text-align: center;
+  display: inline-block;
+  font-family: 'Creepster', cursive;
+  list-style-type: none;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.number-box {
+  width: 1.4em;
+  height: 1.4em;
+  background-color: #1c1c1c;
+  border: 2px solid #ffd700;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  font-size: 3.5rem;
+  color: #ffd700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+}
+
+#countdown li div:last-child {
+  font-size: 1.8rem; 
+  color: #fff;
+  margin-top: 0.1em;
+}
+
+.learn-more-container {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.learn-more-btn {
+  font-family: "Fjalla One", sans-serif;
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #e0852f;
+  border: 3px solid #b3430c;
+  border-radius: 10px;
+  text-decoration: none;
+  margin-left: 30px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.learn-more-btn:hover {
+  background-color: #000;
+  color: #ffd700;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+  transform: scale(1.05);
+}
+
+.countdown-image {
+  width: 30rem;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: -55px;
+  margin-top: -30px;
+}
+
+@media all and (max-width: 768px) {
+  #countdown ul {
+    justify-content: center;
+    padding: 10px;
   }
-  
+
   #countdown li {
-    text-align: center;
-    display: inline-block;
-    font-family: 'Creepster', cursive;
-    list-style-type: none;
-    padding:0.3em;
-    text-transform: uppercase;
-    transition: transform 0.2s; /* Smooth hover effect */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Subtle shadow for depth */
+    font-size: 1.1rem;
+    padding: 0.1em;
+  }
+
+  #countdown li span {
+    font-size: 2.6rem;
   }
   
   .number-box {
-    width: 1.2em;
-    background-color: #1c1c1c; /* Dark background for contrast */
-    border: 2px solid #ffd700; /* Gold border */
-    border-radius: 10px; /* Rounded corners */
-    padding: 12px; /* Padding inside the box */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Shadow effect */
-    font-size: 3.5rem; /* Size for the numbers */
-    color: #ffd700; /* Gold color for numbers */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Subtle shadow for depth */
-    text-align: center; /* Center aligns the text */
-    display: flex; /* Use flexbox for centering */
-    justify-content: center; /* Center items horizontally */
-    align-items: center; /* Center items vertically */
-    height: 100%; /* Ensure full height for vertical centering */
-    
+    width: 0.9em;
+    height: 1.1em;
+    margin-top: 0.1em;
   }
-  
-  /* DAYS, HOURS, MIN, SEC */
-  #countdown li div:last-child {
-    font-size: 1.8rem; 
-    text-transform: uppercase; /* Uppercase labels */
-    color: #fff; /* White color for labels */
-    margin-top: 0.5em; /* Spacing between number and label */
-  }
-  
-  /* Responsive styles */
-  @media all and (max-width: 768px) {
-    #countdown ul{
-      justify-content: center; /* Center items */
-      padding: 10px;
-    }
-  
-    #countdown li {
-      font-size: 1.1rem; /* Smaller font size for countdown items */
-      padding: 0.2em; /* Reduced padding */
-    }
-  
-    #countdown li span {
-      font-size: 3rem; /* Responsive size for countdown numbers */
-    }
 
-    .learn-more-container {
-      margin-top: -1em;
-      padding-right: 2em;
-    }
-  }
-  
   .learn-more-container {
-    text-align: center;
-    margin-bottom: 1em;
+    margin-top: -1em;
+    padding-right: 2em;
   }
-  
-  .learn-more-btn {
-    font-family: "Fjalla One", sans-serif;
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #fff;
-    background-color: #1c1c1c; /* Pumpkin Orange */
-    border: 2px solid #ffd700;
-    border-radius: 10px;
-    text-decoration: none;
-    margin-left: 30px;
-    transition: all 0.3s ease;
-    
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+
+  .countdown-image {
+    width: 100%;
+    max-width: 30rem;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: -55px}
   }
-  
-  .learn-more-btn:hover {
-    background-color: #000;
-    color: #ffd700;
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
-    transform: scale(1.05);
-  }
-  

@@ -1,22 +1,73 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './standings.css';
 
 export const Standings = () => {
-  // Sample data for the hockey tournament standings
-  const teams = [
-    { rank: 1, name: "Maple Leafs", wins: 30, losses: 10, ties: 5, shutouts: 3, points: 65 },
-    { rank: 2, name: "Canadiens", wins: 28, losses: 12, ties: 5, shutouts: 2, points: 61 },
-    { rank: 3, name: "Red Wings", wins: 25, losses: 15, ties: 5, shutouts: 1, points: 55 },
-    { rank: 4, name: "Blackhawks", wins: 23, losses: 17, ties: 5, shutouts: 4, points: 52 },
-    { rank: 5, name: "Penguins", wins: 20, losses: 20, ties: 5, shutouts: 2, points: 45 },
-    { rank: 6, name: "Rangers", wins: 18, losses: 22, ties: 5, shutouts: 1, points: 42 },
-    { rank: 7, name: "Flyers", wins: 15, losses: 25, ties: 5, shutouts: 0, points: 35 },
-    { rank: 8, name: "Capitals", wins: 12, losses: 28, ties: 5, shutouts: 1, points: 30 },
-  ];
+  const [teams, setTeams] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [isFilterVisible, setIsFilterVisible] = useState(true);
+  const [selectedDivision, setSelectedDivision] = useState('B'); // Default to Division A
+
+  useEffect(() => {
+    const fetchStandings = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:5001/getStandings');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setTeams(data.standings);
+        console.log(data.standings)
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchStandings();
+  }, []);
+
+  if (loading) {
+    return <div>Loading standings...</div>;
+  }
+
+  if (error) {
+    return <div>Error fetching standings: {error}</div>;
+  }
+
+  // Filter teams based on the selected division
+  const filteredTeams = teams.filter(team => team.recDivision === selectedDivision);
+
+  // Sort filtered teams based on points in descending order
+  const sortedTeams = filteredTeams.sort((a, b) => b.points - a.points);
 
   return (
     <div className='standings-container'>
       <h2>Standings</h2>
+      <div className="heading-line"></div> 
+      {/* Button to toggle filter visibility */}
+      <button className="show-filters-btn" onClick={() => setIsFilterVisible(!isFilterVisible)}>
+        <i className="fa-solid fa-filter"></i>{isFilterVisible ? ' Hide Filters' : ' Show Filters'}
+      </button>
+
+      {/* Filter Bar */}
+      {isFilterVisible && (
+        <div className="filter-bar">
+          <div className="filter">
+            <label>Rec Division:</label>
+            <select
+              value={selectedDivision}
+              onChange={(e) => setSelectedDivision(e.target.value)}
+            >
+              <option value="A">A</option>
+              <option value="B">B</option>
+            </select>
+          </div>
+        </div>
+      )}
+
+<div className="table-container">
       <table summary="This table shows the standings for different games" className="table table-bordered dt-responsive">
         <thead>
           <tr>
@@ -30,10 +81,15 @@ export const Standings = () => {
           </tr>
         </thead>
         <tbody>
-          {teams.map((team) => (
-            <tr key={team.rank}>
-              <td>{team.rank}</td>
-              <td>{team.name}</td>
+          {sortedTeams.map((team, index) => (
+            <tr key={team._id}>
+              <td>{index + 1}</td>
+              <td>
+              <img
+                  className='team-logo'
+                  src={team.teamName.logo || 'https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg'}
+                  alt="Team Logo"/>
+                {team.teamName.teamName}</td>
               <td>{team.wins}</td>
               <td>{team.losses}</td>
               <td>{team.ties}</td>
@@ -43,6 +99,7 @@ export const Standings = () => {
           ))}
         </tbody>
       </table>
+      </div>
     </div>
   );
 };

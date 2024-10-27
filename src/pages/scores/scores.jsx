@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './scores.css';
 
 export const Scores = () => {
@@ -7,136 +7,168 @@ export const Scores = () => {
   const [selectedTournament, setSelectedTournament] = useState('');
   const [selectedDivision, setSelectedDivision] = useState('');
   const [selectedTeam, setSelectedTeam] = useState('');
-
-  // Sample game data
-  const games = [
-    // Saturday, 11/2/2024
-    { date: '2024-11-02', tournament: 'Halloween Classic 2024', time: '10:00 AM', home: 'Chicago Snipers', score: '0 - 0', away: 'Chicago Stingrays', division: 'B' },
-    { date: '2024-11-02', tournament: 'Halloween Classic 2024', time: '11:00 AM', home: 'Dynamos', score: '0 - 0', away: 'HDH', division: 'B' },
-    { date: '2024-11-02', tournament: 'Halloween Classic 2024', time: '12:00 PM', home: 'Rays', score: '0 - 0', away: 'Kings', division: 'B' },
-    { date: '2024-11-02', tournament: 'Halloween Classic 2024', time: '1:00 PM', home: 'Indiana', score: '0 - 0', away: 'Rays B', division: 'B' },
-    { date: '2024-11-02', tournament: 'Halloween Classic 2024', time: '2:00 PM', home: '', score: 'N/A', away: '', division: '' }, // Special event, no teams
-    { date: '2024-11-02', tournament: 'Halloween Classic 2024', time: '3:00 PM', home: 'Toros', score: '0 - 0', away: 'Indiana', division: 'B' },
-    { date: '2024-11-02', tournament: 'Halloween Classic 2024', time: '4:00 PM', home: 'HDH', score: '0 - 0', away: 'Rays B', division: 'B' },
-    { date: '2024-11-02', tournament: 'Halloween Classic 2024', time: '5:00 PM', home: 'Snipers', score: '0 - 0', away: 'Kings', division: 'B' },
-    { date: '2024-11-02', tournament: 'Halloween Classic 2024', time: '6:00 PM', home: 'Toros', score: '0 - 0', away: 'Dynamos', division: 'B' },
-  
-    // Sunday, 11/3/2024
-    { date: '2024-11-03', tournament: 'Halloween Classic 2024', time: '9:00 AM', home: 'Seed 5 (B)', score: '0 - 0', away: 'Seed 4 (B)', division: 'B' },
-    { date: '2024-11-03', tournament: 'Halloween Classic 2024', time: '10:00 AM', home: 'Seed 2 (B)', score: '0 - 0', away: 'Seed 3 (B)', division: 'B' },
-    { date: '2024-11-03', tournament: 'Halloween Classic 2024', time: '11:00 AM', home: 'Seed 1 (B)', score: '0 - 0', away: 'Winner 4/5', division: 'B' },
-    { date: '2024-11-03', tournament: 'Halloween Classic 2024', time: '12:00 PM', home: 'Seed 2 (A)', score: '0 - 0', away: 'Seed 3 (A)', division: 'A' },
-    { date: '2024-11-03', tournament: 'Halloween Classic 2024', time: '1:00 PM', home: 'Winner 1', score: '0 - 0', away: 'Winner 2', division: 'A' },
-    { date: '2024-11-03', tournament: 'Halloween Classic 2024', time: '2:00 PM', home: 'Winner 2/3', score: '0 - 0', away: 'Seed 1 (A)', division: 'A' },
-  ];
-  
+  const [games, setGames] = useState([]);
+  const [uniqueTeams, setUniqueTeams] = useState([]);
+  const [isFilterVisible, setIsFilterVisible] = useState(true);
   
 
-  // Helper function to format date
-  const formatDate = (dateString) => {
-    const [year, month, day] = dateString.split('-');
-    return `${month}/${day}/${year}`; // Returns MM/DD/YYYY
-  };
+  useEffect(() => {
+    const fetchGames = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:5001/getGames'); // Replace with your API endpoint
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
 
+        // Check if the response is an array before setting the state
+        if (Array.isArray(data.games)) {
+          const sortedGames = data.games.sort((a, b) => {
+            const dateA = new Date(`${a.date} ${a.gameTime}`);
+            const dateB = new Date(`${b.date} ${b.gameTime}`);
+            return dateA - dateB; // Ascending order
+          });
+        
+          setGames(sortedGames);
+
+          const teams = [
+            ...new Set(
+              data.games.flatMap(game => [
+                game.homeTeam ? game.homeTeam.teamName : null,
+                game.awayTeam ? game.awayTeam.teamName : null,
+              ])
+            )
+          ].filter(teamName => teamName); 
+
+          setUniqueTeams(teams);
+          console.log(data.games); // Log the data received
+        } else {
+          console.error('Expected an array, but received:', data);
+        }
+      } catch (error) {
+        console.error('Failed to fetch games:', error);
+      }
+    };
+
+    fetchGames(); // Call the fetch function
+  }, []);
+  
   // Filtered games based on selected filters
   const filteredGames = games.filter(game => {
-    return (selectedYear ? game.year === selectedYear : true) &&
+    const gameYear = game.date.slice(-4);
+    return (selectedYear ? gameYear === selectedYear : true) &&
            (selectedTournament ? game.tournament === selectedTournament : true) &&
-           (selectedDivision ? game.division === selectedDivision : true) &&
-           (selectedTeam ? (game.home === selectedTeam || game.away === selectedTeam) : true);
+           (selectedDivision ? game.recDivision === selectedDivision : true) &&
+           (selectedTeam ? (game.homeTeam.teamName === selectedTeam || game.awayTeam.teamName === selectedTeam) : true);
   });
 
   return (
     <div className='scores-container'>
       <h2>Game Results</h2>
-
+      <div className="heading-line"></div> 
+  
+      {/* Button to toggle filter visibility */}
+      <button className = "show-filters-btn"onClick={() => setIsFilterVisible(!isFilterVisible)}>
+        <i className="fa-solid fa-filter"></i>{isFilterVisible ? 'Hide Filters' : 'Show Filters'}
+      </button>
+  
       {/* Filter Bar */}
-      <div className="filter-bar">
-        <div className="filter">
-          <label>Year:</label>
-          <select value={selectedYear} onChange={(e) => setSelectedYear(e.target.value)}>
-            <option value="">All Years</option>
-            <option value="2024">2024</option>
-            <option value="2023">2023</option>
-          </select>
-        </div>
-        <div className="filter">
-          <label>Tournament:</label>
-          <select value={selectedTournament} onChange={(e) => setSelectedTournament(e.target.value)}>
-            <option value="">All Tournaments</option>
-            <option value="Halloween Bash">Halloween Bash</option>
-            <option value="Spooky Cup">Spooky Cup</option>
-          </select>
-        </div>
-        <div className="filter">
-          <label>Rec Division:</label>
-          <select value={selectedDivision} onChange={(e) => setSelectedDivision(e.target.value)}>
-            <option value="">All Divisions</option>
-            <option value="A">A</option>
-            <option value="B">B</option>
-          </select>
-        </div>
-        <div className="filter">
-          <label>Team Name:</label>
-          <select value={selectedTeam} onChange={(e) => setSelectedTeam(e.target.value)}>
-            <option value="">All Teams</option>
-            <option value="Wicked Wizards">Wicked Wizards</option>
-            <option value="Spooky Spirits">Spooky Spirits</option>
-            <option value="Ghostly Ghouls">Ghostly Ghouls</option>
-            <option value="Vampire Vipers">Vampire Vipers</option>
-          </select>
-        </div>
-      </div>
-
-      {/* Table */}
-      <div className="container">
-        <div className="row">
-          <div className="col-xs-12">
-            <table summary="This table shows the results for different games" className="table table-bordered dt-responsive">
-              <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Time</th>
-                  <th>Home</th>
-                  <th>Score</th>
-                  <th>Away</th>
-                  <th>Rec Div</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredGames.length > 0 ? (
-                  filteredGames.map((game, index) => (
-                    <tr key={index}>
-                      <td>{formatDate(game.date)}</td> {/* Format the date here */}
-                      <td>{game.time}</td>
-                      <td>
-                        <div className='team-container'>
-                          <img className='team-logo' src='https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg'></img>
-                        {game.home}
-                        </div>
-                      </td>
-                      <td>
-                        <p className='game-score'>{game.score}</p>
-                      </td>
-                      <td>
-                        <div className='team-container'>
-                          <img className='team-logo' src='https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg'></img>
-                        {game.away}
-                        </div>
-                      </td>
-                      <td>{game.division}</td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan="6">No games found</td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
+      {isFilterVisible && (
+        <div className="filter-bar">
+          <div className="filter">
+            <label>Year:</label>
+            <select value={selectedYear} onChange={(e) => setSelectedYear(e.target.value)}>
+              <option value="">All Years</option>
+              <option value="2024">2024</option>
+            </select>
+          </div>
+          <div className="filter">
+            <label>Tournament:</label>
+            <select value={selectedTournament} onChange={(e) => setSelectedTournament(e.target.value)}>
+              <option value="">All Tournaments</option>
+              <option value="Halloween Classic 2024">Halloween Classic 2024</option>
+            </select>
+          </div>
+          <div className="filter">
+            <label>Rec Division:</label>
+            <select value={selectedDivision} onChange={(e) => setSelectedDivision(e.target.value)}>
+              <option value="">All Divisions</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+            </select>
+          </div>
+          <div className="filter">
+            <label>Team Name:</label>
+            <select value={selectedTeam} onChange={(e) => setSelectedTeam(e.target.value)}>
+              <option value="">All Teams</option>
+              {uniqueTeams.map((team, index) => (
+                <option key={index} value={team}>{team}</option>
+              ))}
+            </select>
           </div>
         </div>
+      )}
+  
+      {/* Table Wrapped in a New Scores Container */}
+      <div className="table-container">
+        <table summary="This table shows the results for different games" className="table table-bordered dt-responsive">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Home</th>
+              <th>Score</th>
+              <th>Away</th>
+              <th>Div</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredGames.length > 0 ? (
+              filteredGames.map((game, index) => (
+                <tr key={index}>
+                  <td>{game.date}</td>
+                  <td>{game.gameTime}</td>
+                  <td>
+                    <div className='team-container'>
+                      {game.recDivision !== "EVENT" && (
+                        <img
+                          className='team-logo'
+                          src={game.homeTeam?.logo || 'https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg'}
+                          alt="Team Logo"
+                        />
+                      )}
+                      {game.homeTeam?.teamName || game.homeTeam}
+                    </div>
+                  </td>
+                  <td>
+                    <p className='game-score'>{game.score}</p>
+                  </td>
+                  <td>
+                    <div className='team-container'>
+                      {game.recDivision !== "EVENT" && (
+                        <img
+                          className='team-logo'
+                          src={game.awayTeam?.logo || 'https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg'}
+                          alt="Team Logo"
+                        />
+                      )}
+                      {game.awayTeam?.teamName || game.awayTeam}
+                    </div>
+                  </td>
+                  <td className={`text-center ${game.recDivision === "EVENT" ? 'bg-danger text-white fw-bold' : ''}`}>
+                    {game.recDivision}
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="6">No games found</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
       </div>
     </div>
   );
+  
 };

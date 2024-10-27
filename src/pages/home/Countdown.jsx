@@ -44,6 +44,7 @@ const Countdown = () => {
   return (
     <section id="countdown">
       <h2 id="headline">Chicago Halloween Classic 2024 Countdown</h2>
+      <img src="./countdown.svg" alt="Jack-o-laterns with text that says: Let the Games Begin" class="countdown-image" />
       <ul>
         <li>
           <div className="number-box"><span>{timeLeft.days}</span></div>
@@ -62,7 +63,7 @@ const Countdown = () => {
           <div>Sec</div>
         </li>
       </ul>
-
+      
       <div class="learn-more-container">
       <a href="#about" class="learn-more-btn">Learn More</a>
       </div>

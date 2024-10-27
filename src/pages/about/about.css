@@ -1,0 +1,87 @@
+/* About Container */
+.about-container {
+    width: 95%;
+    margin: 15px auto;
+    margin-top: 40px;
+    padding: 15px 10px; /* Adjusted padding for better mobile view */
+    background-color: #161616; /* Dark background for a sleek look */
+    border-radius: 12px;
+    box-shadow: 0px 2px 80px rgba(0, 0, 0, 0.9); /* Deep shadow for a spooky feel */
+    border: 2px solid #f1c40f; /* Golden yellow for a bold contrast */
+    font-size: 1.2rem;
+}
+
+/* Main Title */
+.about-container h1 {
+    text-align: center;
+  padding: 20px 0;
+  color: #f1c40f;
+  font-size: 3em;
+  font-family: "Anton SC", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 4px 4px 10px #000000; /* Shadow effect for spooky depth */
+  border-bottom: 3px solid #f1c40f;
+  margin-bottom: 20px;
+}
+
+/* Section Headings */
+.about-container h2 {
+    color: #f39c12; /* Bright orange for headings */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Shadow for depth */
+    margin-top: 20px; /* Space above headings */
+}
+
+/* Individual Section Styling */
+.about-container section {
+    margin: 20px 0; /* Space above and below sections */
+    padding: 20px; /* Padding inside sections */
+    background-color: #3b30404e;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+}
+
+/* Styling for Paragraphs */
+.about-container p {
+    color: #ffffff; /* White text for paragraphs */
+    font-size: 1.1rem; /* Slightly larger font size for better readability */
+}
+
+/* Styling for Links */
+.about-container a {
+    color: #f39c12; /* Link color */
+    text-decoration: underline; /* Underline links */
+}
+
+.about-container a:hover {
+    color: #ffcc00; /* Lighter yellow on hover */
+}
+
+
+/* Styling for the unordered list */
+.about-container ul {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+}
+
+/* Individual list item styles */
+.about-container li {
+    margin: 10px 0; /* Space between items */
+    padding: 15px; /* Padding inside items */
+    position: relative; /* Positioning for pseudo-element */
+    transition: transform 0.3s; /* Transition for hover effect */
+}
+
+/* Hover effect for list items */
+.about-container li:hover {
+    transform: scale(1.02); /* Slightly enlarge on hover */
+}
+
+/* Contact Information Styling */
+.about-container strong {
+    color: #f39c12; /* Golden yellow for emphasis */
+}
+
+.about-container a:hover {
+    text-decoration: underline; /* Underline on hover */
+}

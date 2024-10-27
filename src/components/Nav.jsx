@@ -30,10 +30,9 @@ function Nav() {
             </button> {/* "Menu" button */}
 
             <ul>
-                <li><Link to="/about">About</Link></li>
+                <li><Link to="/about">Info</Link></li>
                 <li><Link to="/results">Results</Link></li>
                 <li><Link to="/standings">Standings</Link></li>
-                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     );

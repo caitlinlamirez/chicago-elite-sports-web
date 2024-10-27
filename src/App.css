@@ -14,6 +14,7 @@ body {
   width: 100vw;
 }
 
+
 main {
   flex: 1;
   padding: 20px;
@@ -34,14 +35,6 @@ h2 {
   font-size: 2.2em;
 }
 
-.carouselimg {
-  display: block;              
-  margin: 0 auto;             /* Centers the image horizontally */
-  width:98%;               
-  height: auto;              /* Set a fixed height for all images */
-  object-fit: contain;          /* Ensures the image covers the entire area without distortion */
-  border-radius: 8px;
-}
 
 
 .team {

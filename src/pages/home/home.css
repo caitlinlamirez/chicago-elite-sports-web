@@ -1,31 +1,154 @@
 .home-container {
   margin-top: 40px;
 }
+
 .home-container section {
-    width: 95%;
-    margin: 15px;
-    padding-top: 20px;
-    padding-bottom: 5px;
-    padding-inline: 45px;
-    background-color: rgba(248, 108, 15, 0.8);
-    border-radius: 8px;
-    box-shadow: 
-    inset 0 0 25px rgba(0, 0, 0, 0.5), /* Inner shadow */
-    10px 50px 100px rgba(0, 0, 0, 0.5); /* Outer shadow */
-  }
+  margin: 1em auto; 
+  width: 95%;
+  padding-top: 20px;
+  padding-bottom: 5px;
+  padding-inline: 45px;
+  background-color: rgba(15, 14, 14, 0.8);
+  border-radius: 12px;
+  border: 3px solid; 
+  border-image: linear-gradient(45deg, #ff914d, #ffd700, #ff914d);
+  border-image-slice: 1;
+  box-shadow:
+    inset 0 0 25px rgba(0, 0, 0, 0.5),
+    0px 15px 60px rgba(0, 0, 0, 0.8); 
+}
 
 .home-container h2 {
-    border-bottom: 2px solid #ffd700;
+  border-bottom: 2px solid #ffd700;
+}
+
+.team-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(28, 28, 28, 0.8);
+  border: 2px solid #ffd700;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 150px;
+}
+
+.team:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+.team img {
+  width: 4em;
+  height: 4em;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ffd700;
+}
+
+#knapper-logo {
+  width: 40%;
+  height: 40%;
+  margin-bottom: 20px;
+}
+
+#lamirez-logo {
+  width: 55%;
+  height: 55%;
+  margin-bottom: 20px;
+}
+
+.team h3 {
+  font-family: 'Bebas Neue', cursive; 
+  color: #ffd700;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  margin: 0;
 }
 
 @media (max-width: 768px) {
-  .home-container section {
-    width: 98vw;               /* Expand to full screen width */
-    margin: 1em auto;
-
-    padding: 10px 10px 2px;    /* Reduce padding for a better fit on small screens */
-    box-shadow: 
-      inset 0 0 15px rgba(0, 0, 0, 0.3), /* Adjusted inner shadow for smaller screens */
-      5px 25px 50px rgba(0, 0, 0, 0.3);  /* Adjusted outer shadow for smaller screens */
+  .team-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns for tablets and small screens */
+    gap: 15px; /* Space between grid items */
+    margin: 20px 0; /* Vertical spacing */
   }
+
+  .team {
+    height: auto; /* Allow height to adjust automatically */
+    width: 100%; /* Full width for better layout */
+  }
+
+  .team img {
+    width: 80px; /* Slightly larger image for better visibility */
+    height: 80px; /* Consistent height */
+  }
+
+  .team h3 {
+    font-size: 1.5rem; /* Increased font size for better readability */
+  }
+}
+
+@media (max-width: 480px) {
+  .team-list {
+    grid-template-columns: repeat(2, 1fr); /* Single column for mobile */
+  }
+
+  .team {
+    height: auto; /* Keep height auto for flexibility */
+    width: 100%; /* Full width */
+  }
+
+  .team img {
+    width: 60px; /* Adjust image size for mobile */
+    height: 60px; /* Consistent height */
+  }
+
+  .team h3 {
+    font-size: 1.3rem; /* Adjust font size for mobile */
+  }
+}
+
+
+@media (max-width: 768px) {
+  .home-container section {
+    width: 95vw;
+    margin: 1em auto;
+    padding: 10px 10px 2px;
+    box-shadow: 
+      inset 0 0 15px rgba(0, 0, 0, 0.3),
+      5px 25px 50px rgba(0, 0, 0, 0.3);
+  }
+}
+
+
+.carousel-img {
+  display: block;              
+  margin: 0 auto;             /* Centers the image horizontally */
+  width:95%;              
+  height: auto;              /* Set a fixed height for all images */
+  object-fit: contain;          /* Ensures the image covers the entire area without distortion */
+  border-radius: 8px;
+}
+
+
+.event-paragraph {
+  font-family: 'Arial', sans-serif; /* Use a clean, modern font */
+  font-size: 16px; /* Set a readable font size */
+  line-height: 1.5; /* Increase line spacing for better readability */
+  color: #f8c835; /* Dark grey text for good contrast */
+  padding: 15px; /* Add some padding around the text */
+  margin: 20px 0; /* Space above and below the paragraph */
+  text-align: center; /* Center align the text */
 }

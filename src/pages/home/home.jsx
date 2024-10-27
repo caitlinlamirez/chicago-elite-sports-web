@@ -1,41 +1,68 @@
-import React from 'react'
-import Countdown from './Countdown'
+import React, { useEffect, useState } from 'react';
+import Countdown from './Countdown';
 import Carousel from 'react-bootstrap/Carousel';
-import './home.css'
+import './home.css';
 
 export const Home = () => {
+  const [teams, setTeams] = useState([]); // State to hold the teams data
+
+  useEffect(() => {
+    const fetchTeams = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:5001/getTeams');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        console.log('Fetched teams data:', data);
+  
+        // Check if data is an array before setting it
+        if (Array.isArray(data.teams)) {
+          setTeams(data.teams);
+        } else {
+          console.error('Expected an array but received:', data);
+          setTeams([]); // Reset to an empty array on error
+        }
+      } catch (error) {
+        console.error('There was a problem fetching the teams:', error);
+        setTeams([]); // Ensure teams is reset to an empty array on error
+      }
+    };
+  
+    fetchTeams();
+  }, []);
+  
   return (
     <div className='home-container'>
-            <Countdown/>
-            <section id="about">
-                <h2>Welcome to Chicago Elite Sports</h2>
-                <Carousel>
-                <Carousel.Item>
-                <img class="carouselimg" src="/team.jpg" alt="Summer Cup"/>
-                </Carousel.Item>
-            </Carousel>
-                <p>Join us for a spooky night of hockey filled with fun, frights, and festivities! Costumes are encouraged!</p>
-            </section>
-            <section id="teams">
-                <h2>Participating Teams</h2>
-                <div class="team">
-                    <h3>Wicked Wizards</h3>
-                </div>
-                <div class="team">
-                    <h3>Ghostly Ghouls</h3>
-                </div>
-                <div class="team">
-                    <h3>Spooky Spirits</h3>
-                </div>
-                <div class="team">
-                    <h3>Vampire Vipers</h3>
-                </div>
-            </section>
-            <section id="contact">
-                <h2>Contact Us</h2>
-                <p>Email: info@hockeybash.com</p>
-                <p>Phone: (123) 456-7890</p>
-            </section>
+      <Countdown />
+      <section id="about">
+        <h2>Welcome to Chicago Elite Sports</h2>
+        <Carousel>
+          <Carousel.Item>          
+            <img className="carousel-img" src="/carousel2.png" alt="Summer Cup" />
+          </Carousel.Item>
+          <Carousel.Item>
+            <img className="carousel-img" src="/carousel1.png" alt="Summer Cup" />
+          </Carousel.Item>
+        </Carousel>
+        <p className='event-paragraph'>Get ready for the Halloween Classic 2024! This exciting tournament brings together teams from all over the Midwest for a thrilling weekend of hockey. Watch as players showcase their skills in fast-paced matches, and cheer them on during special competitions like the Hardest Shot and Shootout challenges. With a festive atmosphere, music, and Halloween-themed fun, this is an event for fans of all ages. Don your best Halloween costumes and join us for an unforgettable celebration of hockey and community spirit!</p>
+      </section>
+      <section id="teams">
+        <h2>Participating Teams</h2>
+        <div className="team-list">
+          {teams.map((team, index) => (
+            <div className="team" key={index}>
+              <img src={team.logo} alt={team.teamName} /> {/* Displaying logo */}
+              <h3>{team.teamName}</h3> {/* Displaying team name */}
+            </div>
+          ))}
         </div>
-  )
-}
+      </section>
+      <section id="sponsors">
+        <h2>Our Sponsors</h2>
+        <img id="knapper-logo"src="./knapper.png"></img>
+        <img id="lamirez-logo"src="./lamirez_labs.png"></img>
+      </section>
+    </div>
+  );
+};
