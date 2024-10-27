@@ -40,7 +40,10 @@ export const About = () => {
         <p>For any questions or additional information, please reach out to our Event Director, Wade Bittner.</p>
         <p><strong>Email:</strong> <a href="mailto:hockey.player6567@gmail.com">hockey.player6567@gmail.com</a></p>
         <p><strong>Phone:</strong> <a href="tel:+17082681956">708-268-1956</a></p>
-        <p><strong>Follow Us on Social Media:</strong> Stay connected with us on <a href="#">Facebook</a> and <a href="#">Instagram</a> for the latest updates and highlights.</p>
+        <p><strong>Follow Us on Social Media:</strong> Stay connected with us on &nbsp;
+         <a href="https://www.facebook.com/people/Chicago-Elite-Sports/100087379434662/">Facebook</a> and &nbsp;
+         <a href="https://www.instagram.com/chicago_elite_sports/?__d=1%3Futm_source%3Dig_embed">Instagram</a> for the latest updates and highlights
+         .</p>
       </section>
     </div>
   );

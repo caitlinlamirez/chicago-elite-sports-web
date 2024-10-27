@@ -46,7 +46,8 @@ export const Home = () => {
           </Carousel.Item>
           
         </Carousel>
-        <p className='event-paragraph'>Get ready for the Halloween Classic 2024! This exciting tournament brings together teams from all over the Midwest for a thrilling weekend of hockey. Watch as players showcase their skills in fast-paced matches, and cheer them on during special competitions like the Hardest Shot and Shootout challenges. With a festive atmosphere, music, and Halloween-themed fun, this is an event for fans of all ages. Don your best Halloween costumes and join us for an unforgettable celebration of hockey and community spirit!</p>
+        <p className='event-paragraph'>Get ready for the Halloween Classic 2024! This exciting tournament brings together teams from all over the Midwest for a thrilling weekend of hockey. Watch as players showcase their skills in fast-paced matches, and cheer them on during special competitions like the Hardest Shot and Shootout challenges. 
+          <br></br> <br></br>With a festive atmosphere, music, and Halloween-themed fun, this is an event for fans of all ages. Don your best Halloween costumes and join us for an unforgettable celebration of hockey and community spirit!</p>
       </section>
       <section id="teams">
         <h2>Participating Teams</h2>

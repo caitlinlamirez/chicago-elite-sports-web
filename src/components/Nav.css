@@ -71,6 +71,11 @@ nav ul li a.active {
   cursor: pointer;
 }
 
+.logopic {
+  height: 30vh; /* Space between logo and header text */
+  filter: drop-shadow(0 20px 20px rgba(0, 0, 0, 0.5));
+}
+
 /* Make the nav responsive */
 @media (max-width: 768px) {
   /* Hide the nav items by default */
@@ -82,7 +87,7 @@ nav ul li a.active {
     background-color: #222;
     width: 100%;
     text-align: center;
-    margin-top: 55px;
+    margin-top: 10px;
     max-height: 0; /* Initially hidden */
     overflow: hidden; /* Hide overflow when collapsed */
     transition: max-height 0.3s ease; /* Smooth transition for the menu */
@@ -110,9 +115,8 @@ nav ul li a.active {
   nav ul li {
     margin: 1rem 0; /* Add spacing for items in mobile view */
   }
-}
-
-.logopic {
-  height: 30vh; /* Space between logo and header text */
-  filter: drop-shadow(0 20px 20px rgba(0, 0, 0, 0.5));
+  .logopic {
+    height: 25vh;
+    margin-bottom: 5vh;
+  }
 }

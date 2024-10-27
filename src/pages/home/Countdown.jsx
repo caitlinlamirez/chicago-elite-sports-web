@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Countdown.css';
 const Countdown = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -65,7 +66,7 @@ const Countdown = () => {
       </ul>
       
       <div class="learn-more-container">
-      <a href="#about" class="learn-more-btn">Learn More</a>
+      <Link to="/about" className="learn-more-btn">Learn More</Link>
       </div>
     </section>
   );
