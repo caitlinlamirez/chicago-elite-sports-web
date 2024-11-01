@@ -15,7 +15,7 @@ const Countdown = () => {
       hour = minute * 60,
       day = hour * 24;
 
-    const countDown = new Date('November 2, 2024').getTime();
+    const countDown = new Date('November 1, 2024').getTime();
 
     const timer = setInterval(() => {
       const now = new Date().getTime();
@@ -32,9 +32,12 @@ const Countdown = () => {
       // Handle when the countdown reaches zero
       if (distance < 0) {
         clearInterval(timer);
-        document.getElementById("headline").innerText = "It's my birthday!";
-        document.getElementById("countdown").style.display = "none";
-        document.getElementById("content").style.display = "block";
+        setTimeLeft({
+          days:0,
+          hours: 0,
+          minutes:0, 
+          seconds: 0
+        });
       }
     }, 1000);
 
