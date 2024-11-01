@@ -15,7 +15,7 @@ const Countdown = () => {
       hour = minute * 60,
       day = hour * 24;
 
-    const countDown = new Date('November 1, 2024').getTime();
+    const countDown = new Date('November 2, 2024').getTime();
 
     const timer = setInterval(() => {
       const now = new Date().getTime();
